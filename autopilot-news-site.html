@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>AI & Tech News Today - Latest Updates, Trends & Analysis</title>
+    <meta name="description" content="Stay updated with the latest AI, technology, and startup news. Daily curated headlines, market trends, and industry insights updated automatically.">
+    <meta name="keywords" content="AI news, tech news today, artificial intelligence, startups, technology trends, tech industry news">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="AI & Tech News Today - Latest Industry Updates">
+    <meta property="og:description" content="Daily curated tech news, AI breakthroughs, and startup updates">
+    <meta property="og:type" content="website">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a202c;
+            background: #f7fafc;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        h1 {
+            font-size: 1.8em;
+            font-weight: 800;
+        }
+        
+        .last-updated {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        /* Newsletter Signup */
+        .newsletter-bar {
+            background: #2d3748;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+        
+        .newsletter-bar input {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            min-width: 250px;
+        }
+        
+        .newsletter-bar button {
+            padding: 10px 25px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .newsletter-bar button:hover {
+            background: #5568d3;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        /* Ad Spaces */
+        .ad-banner {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border: 2px dashed #667eea;
+            padding: 60px 20px;
+            text-align: center;
+            margin: 30px 0;
+            border-radius: 10px;
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .news-category {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #667eea;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .news-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #2d3748;
+            line-height: 1.4;
+        }
+        
+        .news-excerpt {
+            color: #4a5568;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.85em;
+            color: #718096;
+        }
+        
+        .read-more {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .read-more:hover {
+            color: #5568d3;
+        }
+        
+        /* Sidebar */
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .sidebar {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        
+        .trending-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .trending-item:last-child {
+            border-bottom: none;
+        }
+        
+        .trending-number {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: 700;
+            font-size: 0.85em;
+            margin-right: 10px;
+        }
+        
+        /* Affiliate Product Cards */
+        .product-card {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .product-image {
+            width: 100px;
+            height: 100px;
+            background: #e2e8f0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+        }
+        
+        .product-info {
+            flex: 1;
+        }
+        
+        .product-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #2d3748;
+        }
+        
+        .product-price {
+            color: #667eea;
+            font-weight: 700;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .buy-button {
+            background: #48bb78;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .buy-button:hover {
+            background: #38a169;
+        }
+        
+        /* Loading Skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 5px;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 40px 20px;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-bar input {
+                min-width: 200px;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div>
+                <h1>🚀 AI & Tech News Daily</h1>
+                <div class="last-updated">Last updated: <span id="lastUpdate">Loading...</span></div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Newsletter Bar -->
+    <div class="newsletter-bar">
+        <strong>📧 Get daily news delivered to your inbox</strong>
+        <input type="email" id="emailInput" placeholder="your@email.com">
+        <button onclick="subscribeNewsletter()">Subscribe Free</button>
+    </div>
+    
+    <div class="container">
+        <!-- Top Banner Ad -->
+        <div class="ad-banner">
+            📊 SPONSORED: Premium Ad Space Available - High-Traffic Tech Audience
+        </div>
+        
+        <div class="layout">
+            <!-- Main Content -->
+            <main>
+                <h2 style="margin-bottom: 20px; color: #2d3748;">Latest Headlines</h2>
+                
+                <div id="newsContainer" class="news-grid">
+                    <!-- News will be loaded here by JavaScript -->
+                    <div class="news-card skeleton" style="height: 250px;"></div>
+                    <div class="news-card skeleton" style="height: 250px;"></div>
+                    <div class="news-card skeleton" style="height: 250px;"></div>
+                </div>
+                
+                <!-- Affiliate Product Placement -->
+                <div class="product-card">
+                    <div class="product-image">💻</div>
+                    <div class="product-info">
+                        <div class="product-title">ChatGPT Plus - Unlock GPT-4 Power</div>
+                        <div class="product-price">$20/month</div>
+                        <p style="color: #4a5568; margin-bottom: 10px;">Get faster responses, priority access, and early access to new features</p>
+                        <a href="https://openai.com/chatgpt/pricing" class="buy-button" target="_blank" rel="noopener">Try ChatGPT Plus →</a>
+                    </div>
+                </div>
+                
+                <!-- Mid-Content Ad -->
+                <div class="ad-banner">
+                    💼 SPONSORED: Advertise Your Product to 10K+ Daily Tech Readers
+                </div>
+            </main>
+            
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <h3>🔥 Trending Topics</h3>
+                <div id="trendingContainer">
+                    <!-- Trending will be loaded here -->
+                    <div class="trending-item">
+                        <span class="trending-number">1</span>
+                        <span>Loading trending topics...</span>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px; padding: 20px; background: #f7fafc; border-radius: 8px;">
+                    <h4 style="margin-bottom: 15px;">📚 Recommended</h4>
+                    <a href="https://www.amazon.com/b?node=172282&tag=youraffid" style="display: block; color: #667eea; text-decoration: none; margin-bottom: 10px;">
+                        → Best AI Books 2025
+                    </a>
+                    <a href="https://www.udemy.com/topic/artificial-intelligence/?ranMID=youraffid" style="display: block; color: #667eea; text-decoration: none; margin-bottom: 10px;">
+                        → AI Courses on Udemy
+                    </a>
+                    <a href="#" style="display: block; color: #667eea; text-decoration: none;">
+                        → Tech Tools We Use
+                    </a>
+                </div>
+            </aside>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <p style="margin-bottom: 20px;">AI & Tech News Daily - Your source for curated tech news</p>
+        <p style="font-size: 0.9em; opacity: 0.8;">
+            <a href="#" style="color: white; margin: 0 10px;">About</a> |
+            <a href="#" style="color: white; margin: 0 10px;">Privacy</a> |
+            <a href="#" style="color: white; margin: 0 10px;">Advertise</a> |
+            <a href="#" style="color: white; margin: 0 10px;">Contact</a>
+        </p>
+        <p style="margin-top: 20px; font-size: 0.85em; opacity: 0.7;">
+            © 2025 AI Tech News Daily. Auto-updated via RSS feeds. Some links may be affiliate links.
+        </p>
+    </footer>
+    
+    <script>
+        // Configuration
+        const RSS_FEEDS = [
+            'https://techcrunch.com/feed/',
+            'https://www.theverge.com/rss/index.xml',
+            'https://feeds.arstechnica.com/arstechnica/index',
+            'https://www.wired.com/feed/rss'
+        ];
+        
+        // Use RSS2JSON API (free tier: 10,000 requests/day)
+        const RSS_TO_JSON_API = 'https://api.rss2json.com/v1/api.json?rss_url=';
+        
+        // Update last updated time
+        document.getElementById('lastUpdate').textContent = new Date().toLocaleString();
+        
+        // Fetch and display news
+        async function loadNews() {
+            const newsContainer = document.getElementById('newsContainer');
+            newsContainer.innerHTML = '';
+            
+            let allNews = [];
+            
+            // Fetch from multiple RSS feeds
+            for (const feed of RSS_FEEDS) {
+                try {
+                    const response = await fetch(RSS_TO_JSON_API + encodeURIComponent(feed));
+                    const data = await response.json();
+                    
+                    if (data.items) {
+                        allNews = allNews.concat(data.items.slice(0, 5)); // Get top 5 from each feed
+                    }
+                } catch (error) {
+                    console.error('Error fetching feed:', error);
+                }
+            }
+            
+            // Sort by published date
+            allNews.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+            
+            // Display news
+            allNews.slice(0, 12).forEach((item, index) => {
+                const card = createNewsCard(item, index);
+                newsContainer.appendChild(card);
+            });
+            
+            // Update trending
+            updateTrending(allNews.slice(0, 5));
+        }
+        
+        function createNewsCard(item, index) {
+            const card = document.createElement('div');
+            card.className = 'news-card';
+            
+            const categories = ['AI', 'Startups', 'Tech', 'Innovation', 'Analysis'];
+            const category = categories[index % categories.length];
+            
+            const timeAgo = getTimeAgo(new Date(item.pubDate));
+            
+            // Clean description (remove HTML tags)
+            const description = item.description 
+                ? item.description.replace(/<[^>]*>/g, '').substring(0, 150) + '...'
+                : 'Click to read the full article on the source website.';
+            
+            card.innerHTML = `
+                <span class="news-category">${category}</span>
+                <h3 class="news-title">${item.title}</h3>
+                <p class="news-excerpt">${description}</p>
+                <div class="news-meta">
+                    <span>${timeAgo}</span>
+                    <a href="${item.link}" target="_blank" rel="noopener" class="read-more">Read More →</a>
+                </div>
+            `;
+            
+            return card;
+        }
+        
+        function updateTrending(items) {
+            const container = document.getElementById('trendingContainer');
+            container.innerHTML = '';
+            
+            items.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'trending-item';
+                div.innerHTML = `
+                    <span class="trending-number">${index + 1}</span>
+                    <a href="${item.link}" target="_blank" rel="noopener" style="color: #2d3748; text-decoration: none;">
+                        ${item.title.substring(0, 60)}${item.title.length > 60 ? '...' : ''}
+                    </a>
+                `;
+                container.appendChild(div);
+            });
+        }
+        
+        function getTimeAgo(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+            
+            let interval = seconds / 31536000;
+            if (interval > 1) return Math.floor(interval) + " years ago";
+            
+            interval = seconds / 2592000;
+            if (interval > 1) return Math.floor(interval) + " months ago";
+            
+            interval = seconds / 86400;
+            if (interval > 1) return Math.floor(interval) + " days ago";
+            
+            interval = seconds / 3600;
+            if (interval > 1) return Math.floor(interval) + " hours ago";
+            
+            interval = seconds / 60;
+            if (interval > 1) return Math.floor(interval) + " minutes ago";
+            
+            return "Just now";
+        }
+        
+        function subscribeNewsletter() {
+            const email = document.getElementById('emailInput').value;
+            
+            if (!email || !email.includes('@')) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Connect to ConvertKit/Mailchimp/etc (free tiers available)
+            // For now, just store in localStorage or send to a Google Form
+            console.log('Subscribing:', email);
+            
+            // Example: Send to Google Form
+            // Replace FORM_ID with your actual Google Form ID
+            const googleFormUrl = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
+            
+            alert('✅ Thanks for subscribing! Check your email for confirmation.');
+            document.getElementById('emailInput').value = '';
+            
+            // Track conversion for analytics
+            if (window.gtag) {
+                gtag('event', 'newsletter_signup', {
+                    'event_category': 'engagement',
+                    'event_label': 'email_subscription'
+                });
+            }
+        }
+        
+        // Load news on page load
+        loadNews();
+        
+        // Auto-refresh every 30 minutes
+        setInterval(loadNews, 30 * 60 * 1000);
+        
+        // Track ad clicks (for your own analytics)
+        document.querySelectorAll('.ad-banner').forEach(ad => {
+            ad.addEventListener('click', () => {
+                console.log('Ad clicked');
+                // Send to your analytics
+            });
+        });
+    </script>
+</body>
+</html>
